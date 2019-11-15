@@ -12,7 +12,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: yarn test
+      - run: |
+          yarn install --frozen-lockfile
+          yarn test
 
   publish-npm:
     needs: build
@@ -23,6 +25,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
+      - run: yarn install --frozen-lockfile
       - run: yarn build
       - run: yarn publish
         env:
@@ -38,6 +41,7 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '`Himenon'
+      - run: yarn install --frozen-lockfile
       - run: yarn build
       - run: yarn publish
         env:
