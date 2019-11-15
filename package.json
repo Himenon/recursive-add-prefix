@@ -1,7 +1,7 @@
 {
   "name": "recursive-add-prefix",
   "version": "0.0.1",
-  "description": "Reursivly add prefix",
+  "description": "Recursively add prefix",
   "keywords": [],
   "homepage": "https://github.com/recursive-add-prefix#readme",
   "bugs": {
@@ -24,25 +24,31 @@
     "lib": "lib"
   },
   "scripts": {
-    "build": "yarn run clean && tsc -p ./tsconfig.build.json",
+    "build": "yarn clean && tsc -p ./tsconfig.build.json",
     "ci:notify:release": "ts-node ./scripts/notify.ts",
     "clean": "rimraf ./lib",
     "cli": "node ./lib/cli.js",
+    "commit": "npx git-cz",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "cruiser": "dependency-cruiser --validate .dependency-cruiser.json src",
-    "develop": "yarn run build -- --watch",
+    "develop": "yarn build -- --watch",
     "format": "prettier --config .prettierrc --write src/*.{ts,tsx}",
     "lint": "eslint -c ./.eslintrc.json 'src/**/*.{ts,tsx}'",
-    "lint:fix": "yarn run lint -- --fix",
+    "lint:fix": "yarn lint -- --fix",
     "server": "node ./lib/server.js",
-    "start": "yarn run develop",
-    "test": "yarn run cruiser && yarn run test:jest",
-    "test:ci": "yarn run test && codecov",
+    "start": "yarn develop",
+    "test": "yarn test:jest",
+    "test:ci": "yarn test && codecov",
     "test:jest": "jest -c ./jest.config.json",
-    "test:watch": "yarn run test:jest -- --watch",
+    "test:watch": "yarn test:jest -- --watch",
     "version_up:major": "changelog -M && git add CHANGELOG.md && git commit -m \"chore(change-log): updated CHANGELOG.md\" && npm version major",
     "version_up:minor": "changelog -m && git add CHANGELOG.md && git commit -m \"chore(change-log): updated CHANGELOG.md\" && npm version minor",
     "version_up:patch": "changelog -p && git add CHANGELOG.md && git commit -m \"chore(change-log): updated CHANGELOG.md\" && npm version patch"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "dependencies": {},
   "devDependencies": {
@@ -54,18 +60,17 @@
     "@typescript-eslint/eslint-plugin-tslint": "^2.7.0",
     "@typescript-eslint/parser": "^2.7.0",
     "codecov": "^3.6.1",
-    "dependency-cruiser": "^5.2.3",
+    "commitizen": "^4.0.3",
     "eslint": "^6.6.0",
     "generate-changelog": "^1.8.0",
     "husky": "^3.0.9",
     "jest": "^24.9.0",
     "jest-cli": "^24.9.0",
-    "lint-staged": "^9.4.2",
+    "lint-staged": "^9.4.3",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
     "sort-package-json": "^1.23.1",
     "ts-jest": "^24.1.0",
-    "ts-node": "^8.5.0",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^9.0.0",
