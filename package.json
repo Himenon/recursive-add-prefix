@@ -28,7 +28,6 @@
     "clean": "rimraf ./lib",
     "cli": "node ./lib/cli.js",
     "commit": "npx git-cz",
-    "commitmsg": "commitlint -e $GIT_PARAMS",
     "cruiser": "dependency-cruiser --validate .dependency-cruiser.json src",
     "develop": "yarn build --watch",
     "format": "prettier --config .prettierrc --write src/*.{ts,tsx}",
@@ -73,5 +72,10 @@
     "tslint-config-standard": "^9.0.0",
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.7.2"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+    }
   }
 }
