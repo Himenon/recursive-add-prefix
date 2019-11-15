@@ -22,6 +22,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Version up
         run: |
+          git fetch origin
           yarn install --frozen-lockfile
           yarn build
           yarn version_up
