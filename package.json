@@ -25,26 +25,21 @@
   },
   "scripts": {
     "build": "yarn clean && tsc -p ./tsconfig.build.json",
-    "ci:notify:release": "ts-node ./scripts/notify.ts",
     "clean": "rimraf ./lib",
     "cli": "node ./lib/cli.js",
     "commit": "npx git-cz",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "cruiser": "dependency-cruiser --validate .dependency-cruiser.json src",
-    "develop": "yarn build -- --watch",
+    "develop": "yarn build --watch",
     "format": "prettier --config .prettierrc --write src/*.{ts,tsx}",
     "lint": "eslint -c ./.eslintrc.json 'src/**/*.{ts,tsx}'",
-    "lint:fix": "yarn lint -- --fix",
-    "server": "node ./lib/server.js",
+    "lint:fix": "yarn lint --fix",
     "start": "yarn develop",
     "test": "yarn test:jest",
     "test:ci": "yarn test && codecov",
     "test:jest": "jest -c ./jest.config.json",
-    "test:watch": "yarn test:jest -- --watch",
-    "version_up": "lerna version --yes",
-    "version_up:major": "changelog -M && git add CHANGELOG.md && git commit -m \"chore(change-log): updated CHANGELOG.md\" && npm version major",
-    "version_up:minor": "changelog -m && git add CHANGELOG.md && git commit -m \"chore(change-log): updated CHANGELOG.md\" && npm version minor",
-    "version_up:patch": "changelog -p && git add CHANGELOG.md && git commit -m \"chore(change-log): updated CHANGELOG.md\" && npm version patch"
+    "test:watch": "yarn test:jest --watch",
+    "version_up": "lerna version --yes"
   },
   "config": {
     "commitizen": {
