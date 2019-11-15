@@ -3,13 +3,12 @@ export interface OnlyStringValueObject {
 }
 
 export const addPrefix = (prefix: string, obj: OnlyStringValueObject): OnlyStringValueObject => {
-  for (const key in obj) {
-    const nextObj = obj[key];
-    if (typeof nextObj === "string") {
-      obj[key] = prefix + obj[key];
+  Object.entries(obj).forEach((([key, value]) => {
+    if (typeof value === "string") {
+      obj[key] = prefix + value;
     } else {
-      addPrefix(prefix, nextObj);
+      obj[key] = addPrefix(prefix, value);
     }
-  }
+  }));
   return obj;
 };

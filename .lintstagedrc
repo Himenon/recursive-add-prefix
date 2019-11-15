@@ -1,7 +1,5 @@
 {
-  "linters": {
-    "*.{ts,tsx}": ["yarn run format", "yarn run lint", "git add"],
-    "package.json": ["sort-package-json", "git add"]
-  },
-  "ignore": ["yarn.lock", "node_modules/**/*"]
+  "*.{ts,tsx,js,jsx,json,yml,yaml,html,md}": ["prettier --write", "git add"],
+  "*.{ts,tsx}": ["eslint --fix", "git add"],
+  "package.json": ["sort-package-json", "git add"]
 }
