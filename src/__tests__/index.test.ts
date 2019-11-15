@@ -15,4 +15,9 @@ describe("Only String value object", () => {
     const obj = { a: "level1", b: { c: "level2", d: {} } };
     expect(addPrefix("test-", obj)).toEqual({ a: "test-level1", b: { c: "test-level2", d: {} } });
   });
+
+  test("Include number", () => {
+    const obj = { a: "level1", b: { c: "level2", d: 1 } };
+    expect(addPrefix("test-", obj as any)).toEqual({ a: "test-level1", b: { c: "test-level2", d: 1 } });
+  });
 });
