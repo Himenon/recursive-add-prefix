@@ -41,7 +41,7 @@
     "test:ci": "yarn test && codecov",
     "test:jest": "jest -c ./jest.config.json",
     "test:watch": "yarn test:jest -- --watch",
-    "release": "lerna publish from-package --yes",
+    "version_up": "lerna version --yes",
     "version_up:major": "changelog -M && git add CHANGELOG.md && git commit -m \"chore(change-log): updated CHANGELOG.md\" && npm version major",
     "version_up:minor": "changelog -m && git add CHANGELOG.md && git commit -m \"chore(change-log): updated CHANGELOG.md\" && npm version minor",
     "version_up:patch": "changelog -p && git add CHANGELOG.md && git commit -m \"chore(change-log): updated CHANGELOG.md\" && npm version patch"
