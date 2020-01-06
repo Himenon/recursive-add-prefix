@@ -24,7 +24,7 @@ jobs:
         run: |
           git fetch origin +refs/heads/master:refs/remotes/origin/master;
           git checkout master;
-          git reset --hard "$CI_COMMIT_ID";
+          git reset --hard "$GITHUB_SHA";
           yarn install --frozen-lockfile
           yarn version_up
         env:
