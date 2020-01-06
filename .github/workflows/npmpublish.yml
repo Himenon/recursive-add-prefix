@@ -25,9 +25,10 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
-      - run: yarn publish
+      - run: |
+          yarn install --frozen-lockfile
+          yarn build
+          yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
@@ -40,9 +41,11 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-          scope: '`Himenon'
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
-      - run: yarn publish
+          scope: 'Himenon'
+      - run: |
+          yarn install --frozen-lockfile
+          yarn build
+          yarn publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
