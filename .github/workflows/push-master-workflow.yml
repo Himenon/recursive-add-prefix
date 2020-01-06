@@ -14,7 +14,9 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        with:
+          ref: master
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -22,9 +24,6 @@ jobs:
 
       - name: yarn install, build, and test
         run: |
-          git fetch origin +refs/heads/master:refs/remotes/origin/master;
-          git checkout master;
-          git reset --hard "$GITHUB_SHA";
           yarn install --frozen-lockfile
           yarn version_up
         env:
