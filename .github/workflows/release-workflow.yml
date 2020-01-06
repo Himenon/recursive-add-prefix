@@ -18,7 +18,7 @@ jobs:
           yarn install --frozen-lockfile
           yarn test
 
-  publish-npm:
+  release-npm-packages:
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -33,23 +33,7 @@ jobs:
           yarn install --frozen-lockfile
           yarn build
           yarn lerna publish --yes --registry https://registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
+          yarn lerna publish --yes --registry https://npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-
-  publish-gpr:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: master
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://npm.pkg.github.com/
-      - run: |
-          yarn install --frozen-lockfile
-          yarn build
-          yarn lerna publish --yes --registry https://npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
