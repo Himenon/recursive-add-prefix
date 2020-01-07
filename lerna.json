@@ -6,6 +6,13 @@
       "message": "chore(release): release"
     }
   },
+  "publish": {
+    "access": "public",
+    "allowBranch": "master",
+    "ignoreChanges": [
+      "CHANGELOG.md"
+    ]
+  },
   "version": "independent",
   "npmClient": "yarn",
   "packages": ["."]

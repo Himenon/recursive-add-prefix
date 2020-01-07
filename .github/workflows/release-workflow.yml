@@ -35,7 +35,7 @@ jobs:
           yarn install --frozen-lockfile
           yarn build
           echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> ~/.npmrc
-          yarn lerna publish from-package --yes --registry https://npm.pkg.github.com/Himenon:_authToken=${GITHUB_TOKEN}
+          yarn lerna publish from-package --yes --registry https://npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
