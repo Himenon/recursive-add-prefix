@@ -1,5 +1,5 @@
 {
-  "name": "recursive-add-prefix",
+  "name": "@himenon/recursive-add-prefix",
   "version": "0.1.12",
   "description": "Recursively add prefix",
   "keywords": [],
