@@ -1,4 +1,4 @@
-name: Release Action
+name: Release Workflow
 
 on:
   release:
@@ -19,28 +19,8 @@ jobs:
           yarn test
           yarn build
 
-  release-npm-packages:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: master
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
-      - run: |
-          yarn install --frozen-lockfile
-          yarn build
-          echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" >> ~/.npmrc
-          yarn lerna publish from-package --yes --registry https://registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
   release-github-npm-registry:
-    needs: release-npm-packages
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -58,3 +38,24 @@ jobs:
           yarn lerna publish from-package --yes --registry https://npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+  release-npm-packages:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: |
+          yarn install --frozen-lockfile
+          yarn build
+          echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" >> ~/.npmrc
+          yarn lerna publish from-package --yes
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
