@@ -32,8 +32,8 @@ jobs:
       - run: |
           yarn install --frozen-lockfile
           yarn build
-          yarn lerna publish --yes --registry https://registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
-          yarn lerna publish --yes --registry https://npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+          yarn lerna publish from-git --yes --registry https://registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
+          yarn lerna publish from-git --yes --registry https://npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
