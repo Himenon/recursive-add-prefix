@@ -1,6 +1,6 @@
-# [recursive-add-prefix](https://github.com/Himenon/recursive-add-prefix)
+# [@himenon/recursive-add-prefix](https://github.com/Himenon/recursive-add-prefix)
 
-[![npm version](https://badgen.net/npm/v/recursive-add-prefix)](https://npm.im/recursive-add-prefix)
+[![npm version](https://badgen.net/npm/v/@himenon/recursive-add-prefix)](https://npm.im/@himenon/recursive-add-prefix)
 
 ## Usage
 
@@ -9,7 +9,7 @@ yarn add recursive-add-prefix
 ```
 
 ```ts
-import { addPrefix } from "recursive-add-prefix";
+import { addPrefix } from "@himenon/recursive-add-prefix";
 
 const pathMap = {
   a: "/a/b/c",
