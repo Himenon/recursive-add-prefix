@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.1.19"></a>
+## 0.1.19 (2020-07-27)
+
+**Note:** Version bump only for package @himenon/recursive-add-prefix
+
+
+
+
+
 <a name="0.1.18"></a>
 ## 0.1.18 (2020-07-04)
 
